@@ -109,7 +109,43 @@ namespace oop05
             //but the Dept field is a reference type and is shared between both objects
             //Therefore, changing Dept.Name in e2 also affects e1.
             #endregion
+            #endregion
+            #region part2
+            Cinema cinema = new Cinema();
+            cinema.OpenCinema();
 
+            StandardTicket t1 = new StandardTicket("Inception", 80, "A5");
+            VIPTicket t2 = new VIPTicket("Avengers", 200, true);
+            IMAXTicket t3 = new IMAXTicket("Dune", 130, true);
+
+            t1.Book();
+            t2.Book();
+            t3.Book();
+
+            cinema.AddTicket(t1);
+            cinema.AddTicket(t2);
+            cinema.AddTicket(t3);
+
+            cinema.PrintAllTickets();
+
+            Console.WriteLine("--- Clone Test ---");
+
+            VIPTicket clone = (VIPTicket)t2.Clone();
+            clone.MovieName = "Interstellar";
+
+            Console.Write("Original : ");
+            t2.Print();
+
+            Console.Write("Clone    : ");
+            clone.Print();
+
+            Console.WriteLine("\n--- After Cancellation ---");
+            t1.Cancel();
+            t1.Print();
+
+            BookingHelper.PrintAll(new IPrintable[] { t1, t2, t3 });
+
+            cinema.CloseCinema();
             #endregion
 
         }
