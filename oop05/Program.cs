@@ -100,6 +100,15 @@ namespace oop05
             //Unintended side effects.
             //If both objects share the same referenced object, modifying it in one object will affect the other.
             #endregion
+            #region question4
+            // Final Output:
+            //Dev - Testing
+            //QA - Testing
+
+            //This happens because MemberwiseClone() creates a shallow copy. The Title field is independent after reassignment,. 
+            //but the Dept field is a reference type and is shared between both objects
+            //Therefore, changing Dept.Name in e2 also affects e1.
+            #endregion
 
             #endregion
 
